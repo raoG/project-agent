@@ -6,6 +6,7 @@
 
 package com.gaurav.rao.map;
 
+import com.gaurav.rao.stats.GeoCoordinate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,30 +18,52 @@ import java.util.Map;
  */
 public class RegionMap {
     
-    private final CityCatalog cityCatalog; 
-    private final List<Edge> edges;
-    private final Map<Location, List<Edge>> adjEdges;
+    private final List<Location> locations;
+    private final List<Route> routes;
+    private final Map<Location, List<Route>> adjacentRoutes;
     
     public RegionMap(){
-        cityCatalog = new CityCatalog();
-        edges = new ArrayList<>();
-        adjEdges = new HashMap<>();
+        locations       = new ArrayList<>();
+        routes          = new ArrayList<>();
+        adjacentRoutes  = new HashMap<>();
     }
 
-    public CityCatalog getCityCatalog() {
-        return cityCatalog;
-    }
-
-    public List<Edge> getEdges() {
-        return edges;
-    }
-
-    public Map<Location, List<Edge>> allAdjEdges() {
-        return adjEdges;
+    public List<Location> getLocations(){
+        return locations;
     }
     
-    public List<Edge> adjEdges(Location l){
-        return adjEdges.get(l);
+    public List<Route> getRoutes(){
+        return routes;
     }
     
+    public Map<Location, List<Route>> adjacentRoutes(){
+        return adjacentRoutes;
+    }
+    
+    public List<Route> adjacentRoute(Location loc){
+        return adjacentRoutes.get(loc);
+    }
+    
+    public Location addLocation(String name, GeoCoordinate coordinate){
+        Location l = new Location(name, coordinate);
+        locations.add(l);
+        adjacentRoutes.put(l, new ArrayList<Route>());
+        return l;
+    }
+    
+    public Location getLocation(String name){
+        for(Location l: locations){
+            if(l.getName().equalsIgnoreCase(name)){
+                return l;
+            }
+        }
+        return null;
+    }
+    
+    public void addRoute(Location one, Location two, float distance){
+        Route r = new Route(one, two, distance);
+        routes.add(r);
+        adjacentRoutes.get(one).add(r);
+        adjacentRoutes.get(two).add(r);
+    }
 }

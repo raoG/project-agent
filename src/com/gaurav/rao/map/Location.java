@@ -6,6 +6,7 @@
 
 package com.gaurav.rao.map;
 
+import com.gaurav.rao.stats.Coordinate;
 import com.gaurav.rao.stats.GeoCoordinate;
 
 /**

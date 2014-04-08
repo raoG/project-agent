@@ -10,13 +10,13 @@ package com.gaurav.rao.map;
  *
  * @author Gaurav
  */
-public class Edge {
+public class Route {
     
     private final Location one;
     private final Location two; 
     private final float distance; 
 
-    public Edge(Location one, Location two, float distance) {
+    public Route(Location one, Location two, float distance) {
         this.one = one;
         this.two = two;
         this.distance = distance;
