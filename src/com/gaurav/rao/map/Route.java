@@ -34,4 +34,9 @@ public class Route {
         if(this.one == one) return two;
         else return one;
     }
+    
+    @Override
+    public String toString(){
+        return one + " -> " + two + "["+ distance+"]";
+    }
 }

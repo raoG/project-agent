@@ -8,72 +8,53 @@ package com.gaurav.rao.initializer;
 
 import com.gaurav.rao.map.Location;
 import com.gaurav.rao.map.RegionMap;
-import com.gaurav.rao.stats.GeoCoordinate;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import com.gaurav.rao.stats.Coordinate;
+import java.util.List;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Gaurav
  */
 public class MapInitializer {
-    
-    private static final String LOCATION_FILE = "cities.txt";
-    private static final String ADJANCY_FILE = "adj.txt";
         
-    public static void initRegionMap(RegionMap rm) {
-        initNodes(rm);
-        initEdges(rm);
+    public static void initRegionMap(RegionMap rm, List<JLabel> labels) {
+        initLocations(rm, labels);
+        initRoutes(rm, labels);
     }
         
-    private static void initNodes(RegionMap rm){   
-        try {
+    private static void initLocations(RegionMap rm, List<JLabel> labels){   
+                          
+            for(JLabel lbl : labels){
                 
-            BufferedReader br = new BufferedReader(new FileReader(new File(LOCATION_FILE)));
-            
-            String line = br.readLine();
-            while(line!=null){
-                String[] val = line.split(" ");
-                
-                String name = val[0];
-                String[] geo = val[1].split(",");
-                float lat = Float.parseFloat(geo[0]);
-                float lon = Float.parseFloat(geo[1]);
-                
-                rm.addLocation(name, new GeoCoordinate(lat, lon)); 
-                
-                line = br.readLine();
+                String name = lbl.getText();
+                int x = lbl.getX();
+                int y = lbl.getY();
+                rm.addLocation(name, new Coordinate(x,y)); 
             }
-        } catch (Exception e){
-            
-        }
-        System.out.println("");
+    
+        for(Location l : rm.getLocations())
+            System.out.println(l);
     }
     
-    private static void initEdges(RegionMap rm){
+    private static void initRoutes(RegionMap rm, List<JLabel> labels){
        
-        try {   
-            BufferedReader br = new BufferedReader(new FileReader(new File(ADJANCY_FILE)));
+        for(JLabel p1 : labels){
             
-            String line = br.readLine();
-            while(line != null){
-                String[] val   = line.split(" ");
-                
-                Location one   =  rm.getLocation(val[0]);
-                Location two   =  rm.getLocation(val[1]);
-                
-                float distance = Float.parseFloat(val[2]);
-                
-                if (one != null && two != null){   
-                    rm.addRoute(one, two, distance);
+            for(JLabel p2: labels){
+                if(p1 != p2){
+                    
+                    int x1 = p1.getX();
+                    int y1 = p1.getY();
+                    
+                    int x2 = p2.getX();
+                    int y2 = p2.getY();
+                    
+                    float distance = (float)Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+                     System.out.println(p1.getText() + "->" + p2.getText() + "["+ distance +"]");
                 }
-                line = br.readLine();
             }
-        } catch (Exception e){
-            
         }
-        System.out.println("");
+            
     }
-    
 }

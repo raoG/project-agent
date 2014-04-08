@@ -1,18 +1,12 @@
-Boston 42.358056,-71.063611
-Waltham 42.376389,-71.236111
-Medford 42.418333,-71.106667
-Quincy 42.25,-71
-Dedham 42.241667,-71.166667
-Norwood 42.194444,-71.2
-Stoughton 42.125,-71.102778
-Brockton 42.083333,-71.018889
-Braintree 42.206,-71.005
-Rockland 42.130556,-70.916667
-Franklin 42.083333,-71.4
-Foxborough 42.065278,-71.248333
-Billerica 42.558333,-71.269444
-Woburn 42.479167,-71.152778
-Lynn 42.466667,-70.95
-Salem 42.519444,-70.897222
-Beverly 42.558333,-70.88
-Framingham 42.279167,-71.416667
+Worcester
+Northampton
+Pittsfield
+Springfield
+Salem
+Dedham
+Taunton
+Plymouth
+Barnstable
+Nantucket
+Edgartown
+Greenfield

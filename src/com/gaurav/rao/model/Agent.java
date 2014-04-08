@@ -6,7 +6,7 @@
 
 package com.gaurav.rao.model;
 
-import com.gaurav.rao.stats.GeoCoordinate;
+import com.gaurav.rao.stats.Coordinate;
 import com.gaurav.rao.stats.Weather;
 
 /**
@@ -15,13 +15,14 @@ import com.gaurav.rao.stats.Weather;
  */
 public class Agent {
     
+    
     private final String name;
     private final String model;
     private final int maxDistance;
     private final int maxSpeed;
     private final int maxStorage;
     
-    private GeoCoordinate currentLocation; 
+    private Coordinate currentLocation; 
     private Weather weather;
     private float speed;
     private String direction; 
@@ -54,11 +55,11 @@ public class Agent {
         return maxStorage;
     }
     
-    public GeoCoordinate getCurrentLocation() {
+    public Coordinate getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(GeoCoordinate currentLocation) {
+    public void setCurrentLocation(Coordinate currentLocation) {
         this.currentLocation = currentLocation;
     }
 

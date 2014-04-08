@@ -7,7 +7,6 @@
 package com.gaurav.rao.map;
 
 import com.gaurav.rao.stats.Coordinate;
-import com.gaurav.rao.stats.GeoCoordinate;
 
 /**
  *
@@ -16,14 +15,15 @@ import com.gaurav.rao.stats.GeoCoordinate;
 public class Location {
     
     private String name;
-    private final GeoCoordinate coordinate;
+    private final Coordinate coordinate;
+    
 
-    public Location(String name, GeoCoordinate coordinate) {
+    public Location(String name, Coordinate coordinate) {
         this.name = name;
         this.coordinate = coordinate;
     }    
    
-    public GeoCoordinate getCoordinate() {
+    public Coordinate getCoordinate() {
         return coordinate;
     }
 
@@ -35,5 +35,8 @@ public class Location {
         this.name = name;
     }
 
-    
+    @Override
+    public String toString(){
+        return name + "(" + coordinate + ")";
+    }
 }
