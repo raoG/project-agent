@@ -9,9 +9,12 @@ package com.gaurav.rao.view;
 import com.gaurav.rao.initializer.MapInitializer;
 import com.gaurav.rao.map.Location;
 import com.gaurav.rao.map.RegionMap;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  *
@@ -26,13 +29,14 @@ public class MainJFrame extends javax.swing.JFrame {
     RegionMap rm ; 
     List<JLabel> labels;
     
-    
+    List<JLabel> availAgents;
     
     public MainJFrame(){
         initComponents();
         
         rm = new RegionMap();
         labels = new ArrayList<>();
+        availAgents = new ArrayList<>();
                
         labels.add(lblBarnstable);
         labels.add(lblCambridge);
@@ -48,6 +52,12 @@ public class MainJFrame extends javax.swing.JFrame {
         labels.add(lblSpringfield);
         labels.add(lblTaunton);
         labels.add(lblWorcester);
+        
+        availAgents.add(lblAgent1);
+        availAgents.add(lblAgent2);
+        availAgents.add(lblAgent3);
+        availAgents.add(lblAgent4);
+        availAgents.add(lblAgent5);
         
         MapInitializer.initRegionMap(rm, labels);
         
@@ -70,13 +80,13 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MonitoringTabbedPanel = new javax.swing.JTabbedPane();
-        CreateAgentPanel = new javax.swing.JPanel();
+        monitoringTabbedPanel = new javax.swing.JTabbedPane();
+        createAgentPanel = new javax.swing.JPanel();
         cmbFrom = new javax.swing.JComboBox();
         cmbTo = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        MapViewScrollPane = new javax.swing.JScrollPane();
-        MapViewPanel = new javax.swing.JPanel();
+        btnRun = new javax.swing.JButton();
+        mapViewScrollPane = new javax.swing.JScrollPane();
+        mapViewPanel = new javax.swing.JPanel();
         lblWorcester = new javax.swing.JLabel();
         lblNorthampton = new javax.swing.JLabel();
         lblPittsfield = new javax.swing.JLabel();
@@ -87,15 +97,20 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPlymouth = new javax.swing.JLabel();
         lblBarnstable = new javax.swing.JLabel();
         lblNantucket = new javax.swing.JLabel();
-        lblEdgartown = new javax.swing.JLabel();
         lblGreenfield = new javax.swing.JLabel();
+        lblEdgartown = new javax.swing.JLabel();
         lblCambridge = new javax.swing.JLabel();
-        map = new javax.swing.JLabel();
+        lblAgent1 = new javax.swing.JLabel();
+        lblAgent2 = new javax.swing.JLabel();
+        lblAgent3 = new javax.swing.JLabel();
+        lblAgent4 = new javax.swing.JLabel();
+        lblAgent5 = new javax.swing.JLabel();
+        lblMap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CreateAgentPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        createAgentPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cmbFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbFrom.addActionListener(new java.awt.event.ActionListener() {
@@ -106,113 +121,138 @@ public class MainJFrame extends javax.swing.JFrame {
 
         cmbTo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("Run");
+        btnRun.setText("Run");
+        btnRun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout CreateAgentPanelLayout = new javax.swing.GroupLayout(CreateAgentPanel);
-        CreateAgentPanel.setLayout(CreateAgentPanelLayout);
-        CreateAgentPanelLayout.setHorizontalGroup(
-            CreateAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CreateAgentPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout createAgentPanelLayout = new javax.swing.GroupLayout(createAgentPanel);
+        createAgentPanel.setLayout(createAgentPanelLayout);
+        createAgentPanelLayout.setHorizontalGroup(
+            createAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createAgentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CreateAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CreateAgentPanelLayout.createSequentialGroup()
+                .addGroup(createAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createAgentPanelLayout.createSequentialGroup()
                         .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRun, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
-        CreateAgentPanelLayout.setVerticalGroup(
-            CreateAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CreateAgentPanelLayout.createSequentialGroup()
+        createAgentPanelLayout.setVerticalGroup(
+            createAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createAgentPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(CreateAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createAgentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnRun)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        MonitoringTabbedPanel.addTab("New Agent ", CreateAgentPanel);
+        monitoringTabbedPanel.addTab("New Agent ", createAgentPanel);
 
-        getContentPane().add(MonitoringTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 450, 140));
+        getContentPane().add(monitoringTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 450, 140));
 
-        MapViewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        MapViewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mapViewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mapViewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblWorcester.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblWorcester.setForeground(new java.awt.Color(102, 102, 102));
         lblWorcester.setText("Worcester");
-        MapViewPanel.add(lblWorcester, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 90, 20));
+        mapViewPanel.add(lblWorcester, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 90, 20));
 
         lblNorthampton.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblNorthampton.setForeground(new java.awt.Color(102, 102, 102));
         lblNorthampton.setText("Northampton");
-        MapViewPanel.add(lblNorthampton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 90, 20));
+        mapViewPanel.add(lblNorthampton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 90, 20));
 
         lblPittsfield.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblPittsfield.setForeground(new java.awt.Color(102, 102, 102));
         lblPittsfield.setText("Pittsfield");
-        MapViewPanel.add(lblPittsfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 90, 20));
+        mapViewPanel.add(lblPittsfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 90, 20));
 
         lblSpringfield.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblSpringfield.setForeground(new java.awt.Color(102, 102, 102));
         lblSpringfield.setText("Springfield");
-        MapViewPanel.add(lblSpringfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 90, 20));
+        mapViewPanel.add(lblSpringfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 90, 20));
 
         lblSalem.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblSalem.setForeground(new java.awt.Color(102, 102, 102));
         lblSalem.setText("Salem");
-        MapViewPanel.add(lblSalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, 90, 20));
+        mapViewPanel.add(lblSalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, 90, 20));
 
         lblDedham.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblDedham.setForeground(new java.awt.Color(102, 102, 102));
         lblDedham.setText("Dedham");
-        MapViewPanel.add(lblDedham, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 90, 20));
+        mapViewPanel.add(lblDedham, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 90, 20));
 
         lblTaunton.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblTaunton.setForeground(new java.awt.Color(102, 102, 102));
         lblTaunton.setText("Taunton");
-        MapViewPanel.add(lblTaunton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 90, 20));
+        mapViewPanel.add(lblTaunton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 90, 20));
 
         lblPlymouth.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblPlymouth.setForeground(new java.awt.Color(102, 102, 102));
         lblPlymouth.setText("Plymouth");
-        MapViewPanel.add(lblPlymouth, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 90, 20));
+        mapViewPanel.add(lblPlymouth, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 90, 20));
 
         lblBarnstable.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblBarnstable.setForeground(new java.awt.Color(102, 102, 102));
         lblBarnstable.setText("Barnstable");
-        MapViewPanel.add(lblBarnstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 450, 90, 20));
+        mapViewPanel.add(lblBarnstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 450, 90, 20));
 
         lblNantucket.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblNantucket.setForeground(new java.awt.Color(102, 102, 102));
         lblNantucket.setText("Nantucket");
-        MapViewPanel.add(lblNantucket, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 590, 70, 20));
-
-        lblEdgartown.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        lblEdgartown.setForeground(new java.awt.Color(102, 102, 102));
-        lblEdgartown.setText("Edgartown");
-        MapViewPanel.add(lblEdgartown, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 560, 90, 20));
+        mapViewPanel.add(lblNantucket, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 590, 70, 20));
 
         lblGreenfield.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblGreenfield.setForeground(new java.awt.Color(102, 102, 102));
         lblGreenfield.setText("Greenfield");
-        MapViewPanel.add(lblGreenfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 90, 20));
+        mapViewPanel.add(lblGreenfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 90, 20));
+
+        lblEdgartown.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        lblEdgartown.setForeground(new java.awt.Color(102, 102, 102));
+        lblEdgartown.setText("Edgartown");
+        mapViewPanel.add(lblEdgartown, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 560, 90, 20));
 
         lblCambridge.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblCambridge.setForeground(new java.awt.Color(102, 102, 102));
         lblCambridge.setText("Cambridge");
-        MapViewPanel.add(lblCambridge, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 90, 20));
+        mapViewPanel.add(lblCambridge, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 90, 20));
 
-        map.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/massachusetts-county-map.png"))); // NOI18N
-        map.setText("  ");
-        MapViewPanel.add(map, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1130, 640));
+        lblAgent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
+        lblAgent1.setToolTipText("Agent 1");
+        mapViewPanel.add(lblAgent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
 
-        MapViewScrollPane.setViewportView(MapViewPanel);
+        lblAgent2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
+        lblAgent2.setToolTipText("Agent 2");
+        mapViewPanel.add(lblAgent2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
 
-        getContentPane().add(MapViewScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1150, 670));
+        lblAgent3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
+        lblAgent3.setToolTipText("Agent 3");
+        mapViewPanel.add(lblAgent3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
+
+        lblAgent4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
+        lblAgent4.setToolTipText("Agent 4");
+        mapViewPanel.add(lblAgent4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
+
+        lblAgent5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
+        lblAgent5.setToolTipText("Agent 5");
+        mapViewPanel.add(lblAgent5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
+
+        lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/massachusetts-county-map.png"))); // NOI18N
+        lblMap.setText("  ");
+        mapViewPanel.add(lblMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1130, 640));
+
+        mapViewScrollPane.setViewportView(mapViewPanel);
+
+        getContentPane().add(mapViewScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1150, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,6 +271,70 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbFromActionPerformed
 
+    private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        
+            Location from = (Location)cmbFrom.getSelectedItem();
+            Location to = (Location)cmbTo.getSelectedItem();
+           
+            final int PLAY_TIME = getDistance(from, to)*20;
+            
+            final JLabel agent = getAvailableAgent();
+            if(agent == null){
+                System.out.println("No agent available");
+                return;
+            }
+            
+            final int startX = from.getCoordinate().x;
+            final int startY = from.getCoordinate().y;
+
+            final int targetX = to.getCoordinate().x;
+            final int targetY = to.getCoordinate().y;
+            
+            final long startTime = System.currentTimeMillis();
+
+
+            Timer timer = new Timer(30, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                                        
+                    long duration = System.currentTimeMillis() - startTime;
+                    float progress = (float)duration / (float)PLAY_TIME;
+                    if (progress > 1f) {
+                        progress = 1f;
+                        ((Timer)(e.getSource())).stop();
+                    }
+
+                    int x = startX + (int)Math.round((targetX - startX) * progress);
+                    int y = startY + (int)Math.round((targetY - startY) * progress);
+
+                    agent.setLocation(x, y);
+                    if(x == targetX && y == targetY){
+                        availAgents.add(agent);
+                        System.out.println( agent.getToolTipText() + " is available.");
+                    }
+                }
+            });
+            timer.start();
+    }//GEN-LAST:event_btnRunActionPerformed
+
+    public JLabel getAvailableAgent(){
+        JLabel agent = availAgents.get(0);
+        System.out.println( agent.getToolTipText()+ " on run.");
+        availAgents.remove(0);
+        return agent;
+    }
+    
+    public int getDistance(Location p1, Location p2){
+        
+        int x1 = p1.getCoordinate().x;
+        int y1 = p1.getCoordinate().y;
+        int x2 = p2.getCoordinate().x;
+        int y2 = p2.getCoordinate().y;
+        
+        return (int)Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -267,18 +371,21 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CreateAgentPanel;
-    private javax.swing.JPanel MapViewPanel;
-    private javax.swing.JScrollPane MapViewScrollPane;
-    private javax.swing.JTabbedPane MonitoringTabbedPanel;
+    private javax.swing.JButton btnRun;
     private javax.swing.JComboBox cmbFrom;
     private javax.swing.JComboBox cmbTo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel createAgentPanel;
+    private javax.swing.JLabel lblAgent1;
+    private javax.swing.JLabel lblAgent2;
+    private javax.swing.JLabel lblAgent3;
+    private javax.swing.JLabel lblAgent4;
+    private javax.swing.JLabel lblAgent5;
     private javax.swing.JLabel lblBarnstable;
     private javax.swing.JLabel lblCambridge;
     private javax.swing.JLabel lblDedham;
     private javax.swing.JLabel lblEdgartown;
     private javax.swing.JLabel lblGreenfield;
+    private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblNantucket;
     private javax.swing.JLabel lblNorthampton;
     private javax.swing.JLabel lblPittsfield;
@@ -287,6 +394,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSpringfield;
     private javax.swing.JLabel lblTaunton;
     private javax.swing.JLabel lblWorcester;
-    private javax.swing.JLabel map;
+    private javax.swing.JPanel mapViewPanel;
+    private javax.swing.JScrollPane mapViewScrollPane;
+    private javax.swing.JTabbedPane monitoringTabbedPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,9 @@ public class Agent {
     
     private final String name;
     private final String model;
+   
+    
+    
     private final int maxDistance;
     private final int maxSpeed;
     private final int maxStorage;
