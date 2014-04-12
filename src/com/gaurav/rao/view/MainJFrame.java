@@ -9,12 +9,12 @@ package com.gaurav.rao.view;
 import com.gaurav.rao.initializer.MapInitializer;
 import com.gaurav.rao.map.Location;
 import com.gaurav.rao.map.RegionMap;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.gaurav.rao.model.Agent;
+import com.gaurav.rao.model.AgentCatalog;
+import com.gaurav.rao.stats.Wind;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 
 /**
  *
@@ -28,16 +28,27 @@ public class MainJFrame extends javax.swing.JFrame {
     
     RegionMap rm ; 
     List<JLabel> labels;
-    
-    List<JLabel> availAgents;
+    AgentCatalog agentCatalog;
+       
+    static Wind wind;
     
     public MainJFrame(){
         initComponents();
         
         rm = new RegionMap();
+        agentCatalog  = new AgentCatalog();
         labels = new ArrayList<>();
-        availAgents = new ArrayList<>();
                
+        initLabelList();
+        initAgents();     
+        
+        MapInitializer.initRegionMap(rm, labels);    
+        initComboBoxes();
+        
+        Wind.startBlowing(lblWindSpeed, lblWindDirection);
+    }
+    
+    private void initLabelList(){
         labels.add(lblBarnstable);
         labels.add(lblCambridge);
         labels.add(lblDedham);
@@ -52,19 +63,23 @@ public class MainJFrame extends javax.swing.JFrame {
         labels.add(lblSpringfield);
         labels.add(lblTaunton);
         labels.add(lblWorcester);
-        
-        availAgents.add(lblAgent1);
-        availAgents.add(lblAgent2);
-        availAgents.add(lblAgent3);
-        availAgents.add(lblAgent4);
-        availAgents.add(lblAgent5);
-        
-        MapInitializer.initRegionMap(rm, labels);
-        
-        initComboBoxes();
     }
     
-    public void initComboBoxes(){
+    private void initAgents(){
+        Agent agent1 = new Agent("Alpha", 2f, lblAgent1); 
+        Agent agent2 = new Agent("Beta", 2f,lblAgent2); 
+        Agent agent3 = new Agent("Gamma", 2f,lblAgent3); 
+        Agent agent4 = new Agent("Delta", 2f,lblAgent4); 
+        Agent agent5 = new Agent("Epsilon", 2f,lblAgent5); 
+       
+        agentCatalog.addAgent(agent1);
+        agentCatalog.addAgent(agent2);
+        agentCatalog.addAgent(agent3);
+        agentCatalog.addAgent(agent4);
+        agentCatalog.addAgent(agent5);
+    }
+    
+    private void initComboBoxes(){
         cmbFrom.removeAllItems();
         
         for(Location l : rm.getLocations())
@@ -87,6 +102,11 @@ public class MainJFrame extends javax.swing.JFrame {
         btnRun = new javax.swing.JButton();
         mapViewScrollPane = new javax.swing.JScrollPane();
         mapViewPanel = new javax.swing.JPanel();
+        lblAgent1 = new javax.swing.JLabel();
+        lblAgent2 = new javax.swing.JLabel();
+        lblAgent3 = new javax.swing.JLabel();
+        lblAgent4 = new javax.swing.JLabel();
+        lblAgent5 = new javax.swing.JLabel();
         lblWorcester = new javax.swing.JLabel();
         lblNorthampton = new javax.swing.JLabel();
         lblPittsfield = new javax.swing.JLabel();
@@ -100,11 +120,8 @@ public class MainJFrame extends javax.swing.JFrame {
         lblGreenfield = new javax.swing.JLabel();
         lblEdgartown = new javax.swing.JLabel();
         lblCambridge = new javax.swing.JLabel();
-        lblAgent1 = new javax.swing.JLabel();
-        lblAgent2 = new javax.swing.JLabel();
-        lblAgent3 = new javax.swing.JLabel();
-        lblAgent4 = new javax.swing.JLabel();
-        lblAgent5 = new javax.swing.JLabel();
+        lblWindDirection = new javax.swing.JLabel();
+        lblWindSpeed = new javax.swing.JLabel();
         lblMap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,6 +177,31 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mapViewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         mapViewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAgent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent1.setToolTipText("");
+        lblAgent1.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent2.setToolTipText("");
+        lblAgent2.setName("Agent 2"); // NOI18N
+        mapViewPanel.add(lblAgent2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent3.setToolTipText("");
+        lblAgent3.setName("Agent 3"); // NOI18N
+        mapViewPanel.add(lblAgent3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent4.setToolTipText("");
+        lblAgent4.setName("Agent 4"); // NOI18N
+        mapViewPanel.add(lblAgent4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent5.setToolTipText("");
+        lblAgent5.setName("Agent 5"); // NOI18N
+        mapViewPanel.add(lblAgent5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblWorcester.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblWorcester.setForeground(new java.awt.Color(102, 102, 102));
@@ -226,27 +268,11 @@ public class MainJFrame extends javax.swing.JFrame {
         lblCambridge.setText("Cambridge");
         mapViewPanel.add(lblCambridge, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 90, 20));
 
-        lblAgent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
-        lblAgent1.setToolTipText("Agent 1");
-        mapViewPanel.add(lblAgent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
+        lblWindDirection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/compass/compass.jpg"))); // NOI18N
+        mapViewPanel.add(lblWindDirection, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 140, 140));
+        mapViewPanel.add(lblWindSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 454, 140, 30));
 
-        lblAgent2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
-        lblAgent2.setToolTipText("Agent 2");
-        mapViewPanel.add(lblAgent2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
-
-        lblAgent3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
-        lblAgent3.setToolTipText("Agent 3");
-        mapViewPanel.add(lblAgent3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
-
-        lblAgent4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
-        lblAgent4.setToolTipText("Agent 4");
-        mapViewPanel.add(lblAgent4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
-
-        lblAgent5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/plane_normal.png"))); // NOI18N
-        lblAgent5.setToolTipText("Agent 5");
-        mapViewPanel.add(lblAgent5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 30, 30));
-
-        lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/map/massachusetts-county-map.png"))); // NOI18N
+        lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maps/massachusetts-county-map.png"))); // NOI18N
         lblMap.setText("  ");
         mapViewPanel.add(lblMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1130, 640));
 
@@ -275,66 +301,17 @@ public class MainJFrame extends javax.swing.JFrame {
         
             Location from = (Location)cmbFrom.getSelectedItem();
             Location to = (Location)cmbTo.getSelectedItem();
-           
-            final int PLAY_TIME = getDistance(from, to)*20;
             
-            final JLabel agent = getAvailableAgent();
-            if(agent == null){
-                System.out.println("No agent available");
+            Agent agent = agentCatalog.getAgent();
+            if(agent == null) { 
+                System.out.println("No available agent");
                 return;
-            }
-            
-            final int startX = from.getCoordinate().x;
-            final int startY = from.getCoordinate().y;
-
-            final int targetX = to.getCoordinate().x;
-            final int targetY = to.getCoordinate().y;
-            
-            final long startTime = System.currentTimeMillis();
-
-
-            Timer timer = new Timer(30, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                                        
-                    long duration = System.currentTimeMillis() - startTime;
-                    float progress = (float)duration / (float)PLAY_TIME;
-                    if (progress > 1f) {
-                        progress = 1f;
-                        ((Timer)(e.getSource())).stop();
-                    }
-
-                    int x = startX + (int)Math.round((targetX - startX) * progress);
-                    int y = startY + (int)Math.round((targetY - startY) * progress);
-
-                    agent.setLocation(x, y);
-                    if(x == targetX && y == targetY){
-                        availAgents.add(agent);
-                        System.out.println( agent.getToolTipText() + " is available.");
-                    }
-                }
-            });
-            timer.start();
+            }   
+            agent.setSourceAndDestination(from, to);
+            agent.run();
+            System.out.println(agent.name() + " running !");
     }//GEN-LAST:event_btnRunActionPerformed
-
-    public JLabel getAvailableAgent(){
-        JLabel agent = availAgents.get(0);
-        System.out.println( agent.getToolTipText()+ " on run.");
-        availAgents.remove(0);
-        return agent;
-    }
-    
-    public int getDistance(Location p1, Location p2){
-        
-        int x1 = p1.getCoordinate().x;
-        int y1 = p1.getCoordinate().y;
-        int x2 = p2.getCoordinate().x;
-        int y2 = p2.getCoordinate().y;
-        
-        return (int)Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
-    }
-    
-    
+       
     /**
      * @param args the command line arguments
      */
@@ -393,6 +370,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalem;
     private javax.swing.JLabel lblSpringfield;
     private javax.swing.JLabel lblTaunton;
+    private javax.swing.JLabel lblWindDirection;
+    private javax.swing.JLabel lblWindSpeed;
     private javax.swing.JLabel lblWorcester;
     private javax.swing.JPanel mapViewPanel;
     private javax.swing.JScrollPane mapViewScrollPane;

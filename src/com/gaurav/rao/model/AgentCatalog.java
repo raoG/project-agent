@@ -7,7 +7,9 @@
 package com.gaurav.rao.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -16,17 +18,27 @@ import java.util.List;
 public class AgentCatalog {
     
     private List<Agent> agents;
-    
+        
     public AgentCatalog(){
         agents = new ArrayList<Agent>();
     }
-
-    public List<Agent> getAgents() {
+    
+    public List<Agent> agents(){
         return agents;
     }
-
-    public void setAgents(List<Agent> agents) {
-        this.agents = agents;
+    
+    public void addAgent(Agent agent){
+        agent.setAvailability(true);
+        agents.add(agent);
     }
-        
+    
+    public Agent getAgent(){
+        for(Agent agent : agents) {
+            if(agent.isAvailable()){
+                return agent;
+            }
+        }
+        return null;
+    }
+    
 }

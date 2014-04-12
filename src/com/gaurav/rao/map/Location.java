@@ -5,8 +5,7 @@
  */
 
 package com.gaurav.rao.map;
-
-import com.gaurav.rao.stats.Coordinate;
+import java.awt.Point;
 
 /**
  *
@@ -15,28 +14,23 @@ import com.gaurav.rao.stats.Coordinate;
 public class Location {
     
     private String name;
-    private final Coordinate coordinate;
+    private Point coordinate;
     
-
-    public Location(String name, Coordinate coordinate) {
-        this.name = name;
+    public Location(String name, Point coordinate){
+        this.name = name; 
         this.coordinate = coordinate;
-    }    
-   
-    public Coordinate getCoordinate() {
-        return coordinate;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Point getCoordinate() {
+        return coordinate;
     }
-
+    
     @Override
     public String toString(){
-        return name + "(" + coordinate + ")";
+        return name;
     }
 }

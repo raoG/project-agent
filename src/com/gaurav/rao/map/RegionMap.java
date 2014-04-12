@@ -6,7 +6,7 @@
 
 package com.gaurav.rao.map;
 
-import com.gaurav.rao.stats.Coordinate;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +44,7 @@ public class RegionMap {
         return adjacentRoutes.get(loc);
     }
     
-    public Location addLocation(String name, Coordinate coordinate){
+    public Location addLocation(String name, Point coordinate){
         Location l = new Location(name, coordinate);
         locations.add(l);
         adjacentRoutes.put(l, new ArrayList<Route>());

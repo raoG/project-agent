@@ -8,7 +8,7 @@ package com.gaurav.rao.initializer;
 
 import com.gaurav.rao.map.Location;
 import com.gaurav.rao.map.RegionMap;
-import com.gaurav.rao.stats.Coordinate;
+import java.awt.Point;
 import java.util.List;
 import javax.swing.JLabel;
 
@@ -20,21 +20,20 @@ public class MapInitializer {
         
     public static void initRegionMap(RegionMap rm, List<JLabel> labels) {
         initLocations(rm, labels);
-        initRoutes(rm, labels);
+//        initRoutes(rm, labels);
     }
         
     private static void initLocations(RegionMap rm, List<JLabel> labels){   
                           
             for(JLabel lbl : labels){
-                
                 String name = lbl.getText();
                 int x = lbl.getX();
                 int y = lbl.getY();
-                rm.addLocation(name, new Coordinate(x,y)); 
+                rm.addLocation(name, new Point(x,y)); 
             }
     
-        for(Location l : rm.getLocations())
-            System.out.println(l);
+//        for(Location l : rm.getLocations())
+//            System.out.println(l);
     }
     
     private static void initRoutes(RegionMap rm, List<JLabel> labels){
@@ -51,7 +50,7 @@ public class MapInitializer {
                     int y2 = p2.getY();
                     
                     float distance = (float)Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
-                     System.out.println(p1.getText() + "->" + p2.getText() + "["+ distance +"]");
+                    System.out.println(p1.getText() + "->" + p2.getText() + "["+ distance +"]");
                 }
             }
         }
