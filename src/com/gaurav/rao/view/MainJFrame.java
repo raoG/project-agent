@@ -66,17 +66,29 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     private void initAgents(){
+        
         Agent agent1 = new Agent("Alpha", 2f, lblAgent1); 
         Agent agent2 = new Agent("Beta", 2f,lblAgent2); 
         Agent agent3 = new Agent("Gamma", 2f,lblAgent3); 
         Agent agent4 = new Agent("Delta", 2f,lblAgent4); 
-        Agent agent5 = new Agent("Epsilon", 2f,lblAgent5); 
-       
+        Agent agent5 = new Agent("Zeta", 2f,lblAgent5); 
+        Agent agent6 = new Agent("Theta", 2f,lblAgent6); 
+        Agent agent7 = new Agent("Eta", 2f,lblAgent7); 
+        Agent agent8 = new Agent("Iota", 2f,lblAgent8); 
+        Agent agent9 = new Agent("Epsilon", 2f,lblAgent9); 
+        Agent agent10 = new Agent("Kappa", 2f,lblAgent10); 
+
         agentCatalog.addAgent(agent1);
         agentCatalog.addAgent(agent2);
         agentCatalog.addAgent(agent3);
         agentCatalog.addAgent(agent4);
         agentCatalog.addAgent(agent5);
+        agentCatalog.addAgent(agent6);
+        agentCatalog.addAgent(agent7);
+        agentCatalog.addAgent(agent8);
+        agentCatalog.addAgent(agent9);
+        agentCatalog.addAgent(agent10);
+        
     }
     
     private void initComboBoxes(){
@@ -107,6 +119,11 @@ public class MainJFrame extends javax.swing.JFrame {
         lblAgent3 = new javax.swing.JLabel();
         lblAgent4 = new javax.swing.JLabel();
         lblAgent5 = new javax.swing.JLabel();
+        lblAgent6 = new javax.swing.JLabel();
+        lblAgent7 = new javax.swing.JLabel();
+        lblAgent8 = new javax.swing.JLabel();
+        lblAgent9 = new javax.swing.JLabel();
+        lblAgent10 = new javax.swing.JLabel();
         lblWorcester = new javax.swing.JLabel();
         lblNorthampton = new javax.swing.JLabel();
         lblPittsfield = new javax.swing.JLabel();
@@ -180,28 +197,73 @@ public class MainJFrame extends javax.swing.JFrame {
 
         lblAgent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
         lblAgent1.setToolTipText("");
+        lblAgent1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent1.setDisabledIcon(null);
         lblAgent1.setName("Agent 1"); // NOI18N
         mapViewPanel.add(lblAgent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblAgent2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
         lblAgent2.setToolTipText("");
+        lblAgent2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent2.setDisabledIcon(null);
         lblAgent2.setName("Agent 2"); // NOI18N
         mapViewPanel.add(lblAgent2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblAgent3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
         lblAgent3.setToolTipText("");
+        lblAgent3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent3.setDisabledIcon(null);
         lblAgent3.setName("Agent 3"); // NOI18N
         mapViewPanel.add(lblAgent3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblAgent4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
         lblAgent4.setToolTipText("");
+        lblAgent4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent4.setDisabledIcon(null);
         lblAgent4.setName("Agent 4"); // NOI18N
         mapViewPanel.add(lblAgent4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblAgent5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
         lblAgent5.setToolTipText("");
+        lblAgent5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent5.setDisabledIcon(null);
         lblAgent5.setName("Agent 5"); // NOI18N
         mapViewPanel.add(lblAgent5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent6.setToolTipText("");
+        lblAgent6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent6.setDisabledIcon(null);
+        lblAgent6.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent7.setToolTipText("");
+        lblAgent7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent7.setDisabledIcon(null);
+        lblAgent7.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent8.setToolTipText("");
+        lblAgent8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent8.setDisabledIcon(null);
+        lblAgent8.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent9.setToolTipText("");
+        lblAgent9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent9.setDisabledIcon(null);
+        lblAgent9.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        lblAgent10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plane/black/N.png"))); // NOI18N
+        lblAgent10.setToolTipText("");
+        lblAgent10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAgent10.setDisabledIcon(null);
+        lblAgent10.setName("Agent 1"); // NOI18N
+        mapViewPanel.add(lblAgent10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         lblWorcester.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         lblWorcester.setForeground(new java.awt.Color(102, 102, 102));
@@ -270,7 +332,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
         lblWindDirection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/compass/compass.jpg"))); // NOI18N
         mapViewPanel.add(lblWindDirection, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 140, 140));
-        mapViewPanel.add(lblWindSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 454, 140, 30));
+
+        lblWindSpeed.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lblWindSpeed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapViewPanel.add(lblWindSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 40, 40));
 
         lblMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maps/massachusetts-county-map.png"))); // NOI18N
         lblMap.setText("  ");
@@ -353,10 +418,15 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbTo;
     private javax.swing.JPanel createAgentPanel;
     private javax.swing.JLabel lblAgent1;
+    private javax.swing.JLabel lblAgent10;
     private javax.swing.JLabel lblAgent2;
     private javax.swing.JLabel lblAgent3;
     private javax.swing.JLabel lblAgent4;
     private javax.swing.JLabel lblAgent5;
+    private javax.swing.JLabel lblAgent6;
+    private javax.swing.JLabel lblAgent7;
+    private javax.swing.JLabel lblAgent8;
+    private javax.swing.JLabel lblAgent9;
     private javax.swing.JLabel lblBarnstable;
     private javax.swing.JLabel lblCambridge;
     private javax.swing.JLabel lblDedham;

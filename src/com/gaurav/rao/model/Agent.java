@@ -9,7 +9,6 @@ import com.gaurav.rao.map.Location;
 import com.gaurav.rao.stats.Wind;
 import com.gaurav.rao.util.Direction;
 import com.gaurav.rao.util.DirectionUtil;
-import com.gaurav.rao.util.DistanceUtil;
 import com.gaurav.rao.util.IconUtil;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -101,18 +100,18 @@ public class Agent {
 
         final IconUtil icons = new IconUtil();
 
-        Timer timer = new Timer(30, new ActionListener() {
+        Timer timer = new Timer(25, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (currentLocation.x == dstCo.x && currentLocation.y == dstCo.y) {
+                if (currentLocation.x >= dstCo.x && currentLocation.y >= dstCo.y) {
                     setAvailability(true);
                     imageLabel.setVisible(false);
+                    System.out.println(name + " reached.");
                     ((Timer) (e.getSource())).stop();
                 }
 
-                Point old = currentLocation;
 
                 //System.out.println(theta + "->" + speed*Math.sin(theta) +" "+ speed*Math.cos(theta));
                 double theta = DirectionUtil.getTheta(currentLocation, destination.getCoordinate());
@@ -131,7 +130,7 @@ public class Agent {
                 }
 
                 int color = 0;
-                color = Wind.windEffect(currentLocation, directionIndex);
+                // color = Wind.windEffect(currentLocation, directionIndex);
 
                 directionIndex = DirectionUtil.getDirectionIndex(currentLocation, destination.getCoordinate());
                 direction = Direction.values()[directionIndex];

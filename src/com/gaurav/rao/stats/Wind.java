@@ -35,19 +35,19 @@ public class Wind {
     public static void startBlowing(final JLabel speedLabel, final JLabel directionLabel) {
 
         final long startTime = System.currentTimeMillis();
-        final long PLAY_TIME = (random.nextInt(6)+1) * 2000;
+        final long PLAY_TIME = (random.nextInt(6)+1) * 1000;
         
-        int changeInDirection = random.nextInt(4) - 4;
+        int changeInDirection = random.nextInt(5) - 5;
         windIndex = (windIndex + changeInDirection) % 15;
         
         if(windIndex < 0) windIndex += 15;
         direction = Direction.values()[windIndex];
         speed = random.nextInt(20);
         
-        speedLabel.setText(speed + " KM/H ["+ direction.name() +"]");
+        speedLabel.setText(speed+"");
         directionLabel.setIcon(icons.windIcon(direction));
         
-        Timer timer = new Timer(100, new ActionListener() {
+        Timer timer = new Timer(30, new ActionListener() {
                          
             public void actionPerformed(ActionEvent e) {
                 long duration = System.currentTimeMillis() - startTime;
